@@ -16,6 +16,8 @@ public class WebDriverFactory {
         public static WebDriver get () {
 
             String browserName = System.getenv().get("browser");
+            System.out.println(browserName);
+            if (browserName == null) {browserName = "chrome";}
             WebDriver driver;
             switch (browserName) {
                 case "chrome":
@@ -32,6 +34,7 @@ public class WebDriverFactory {
 
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(WAIT_SECONDS_TIMEOUT));
             driver.navigate().to(BASE_URL);
+
             return driver;
         }
 
